@@ -1,0 +1,46 @@
+@header-font: Tahoma, Verdana, Segoe, sans-serif;
+body {
+    font-family: @header-font;
+    background: rgb(36,32,0);
+    background: linear-gradient(90deg, rgba(36,32,0,0.33664803812149857) 0%, rgba(215,227,20,1) 59%, rgba(255,166,0,1) 100%);
+}
+h1, h2, h3, h4 {
+    font-family: 'Open Sans', sans-serif;
+}
+.page-contentBlock{
+    max-width: 1150px;
+    min-width: 950px;
+    padding: 0 125px;
+}
+
+.page-contentBlock h1 {
+    text-align: center;
+    font-size: 35px;
+}
+.page-contentBlock h1:before {
+  content: "";
+  position: absolute;
+  top: 75px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-top: 2px solid #FFF;
+  border-bottom: 2px solid #FFF;
+  z-index: -1;
+}
+.page-contentBlock h1 span {
+  background: white;
+  padding: 0 20px;
+}
+
+.admin_action_cheburek .form-edit{
+    display:none
+}
+.form-edit{
+    .field{
+        padding:10px 0px;
+    }
+}
+.form-edit input,.form-edit textarea{
+    width:100%;
+}
