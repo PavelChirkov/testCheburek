@@ -9,5 +9,5 @@
 </head>
 <body>
         <header class="page-contentBlock">
-                <h1><span>Каталог чебуреков - Админка</span></h1>
+                <h1><span>Каталог чебуреков</span></h1>
         </header>
