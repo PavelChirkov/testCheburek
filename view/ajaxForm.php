@@ -4,6 +4,19 @@
 <? foreach( $cheburek as $row){
     ?>
     <div id="cheburek_<?=$row["id"] ?>" class="admin_cheburek">
+        <div class="admin_name_image">
+
+            <?
+                if($row["image"] != ""){?>
+                <img src="/img/<?=$row["image"];?>" alt="<?=$row["name"]; ?>" >
+            <?}
+            ?>
+            <form enctype="multipart/form-data" action="/image.php?id=<?=$row["id"] ?>" method="POST">
+                <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                Отправить этот файл: <input name="userfile" type="file" />
+                <input type="submit" value="Отправить файл" />
+            </form>
+        </div>
         <div class="admin_name_cheburek">
             <?=$row["name"]; ?>
         </div>
