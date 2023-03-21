@@ -33,11 +33,11 @@
 <div class="admin_new_cheburek">
     <h3>Новый чебурек</h3>
     <div class="form-edit new-form"  >
-                    <div class="field"><input type="text" class="new_cheburek_name" value="" plceholder="Название"></div>
-                    <div class="field"><textarea class="new_cheburek_text" plceholder="Описание"></textarea></div>
-                    <div class="field"><input type="text" class="new_cheburek_price" value="" plceholder="Цена"></div>
-                    <div class="field"><input type="text" class="new_cheburek_value" value="" plceholder="Количество в наличии"></div>
-                    <div class="field"><input type="button" class="new_cheburek"  value="Сохранить"> </div>
+                    <div class="field"><input type="text" class="new_cheburek_name" value="" placeholder="Название" required></div>
+                    <div class="field"><textarea class="new_cheburek_text" placeholder="Описание" required></textarea></div>
+                    <div class="field"><input type="text" class="new_cheburek_price" value="" placeholder="Цена" required></div>
+                    <div class="field"><input type="text" class="new_cheburek_value" value="" placeholder="Количество в наличии" required></div>
+                    <div class="field"><input type="button" class="new_cheburek"  value="Сохранить" required> </div>
     </div>
 </div>
 
@@ -77,31 +77,36 @@
     });
 
     $('.new_cheburek').click(function(){
-        name_cheburek = $("input.name_" + id).val();
-        text_cheburek = $("textarea.text_" + id).val();
-        price_cheburek = $("input.price_" + id).val();
-        value_cheburek = $("input.value_" + id).val();
-        /*$.ajax({
+        name_cheburek = $("input.new_cheburek_name").val();
+        text_cheburek = $("textarea.new_cheburek_text").val();
+        price_cheburek = $("input.new_cheburek_price").val();
+        value_cheburek = $("input.new_cheburek_value").val();
+        $.ajax({
             method: "POST",
-            url: "ajax.php?action=save",
-            data: { id: id, name: name_cheburek, text_cheburek: text_cheburek, price: price_cheburek, value: value_cheburek },
+            url: "ajax.php?action=new",
+            data: {  name: name_cheburek, text_cheburek: text_cheburek, price: price_cheburek, value: value_cheburek }
+        }).done(function() {
+            alert('чебурек добавлен');
+            location.reload();
+        });
+        return false;
+    });
+    $('.delete').click(function(){
+        id = $(this).attr("data-action");
+
+        $.ajax({
+            method: "POST",
+            url: "ajax.php?action=delete",
+            data: { id: id },
             success: function(data) {
-                cheburek = jQuery.parseJSON(data);
-                $("#cheburek_" + id + " .admin_name_cheburek").html(cheburek[1]);
-                $("#cheburek_" + id + " .admin_text_cheburek").html(cheburek[2]);
-                $("#cheburek_" + id + " .admin_price_cheburek").html("<span>Цена:</span> " + cheburek[4] + " руб.");
-                $("#cheburek_" + id + " .admin_value_cheburek").html("<span>Остаток:</span> " + cheburek[5] + " шт." );
-
-                $("input.name_" + id).val(cheburek[1]);
-                $("textarea.text_" + id).val(cheburek[2]);
-                $("input.price_" + id).val(cheburek[4]);
-                $("input.value_" + id).val(cheburek[5]);
-
+                
             }
         }).done(function() {
-            alert('данные обновлены');
-        });*/
+            alert("Удалено");
+            location.reload();
+        });
 
         return false;
     });
+
 </script>
